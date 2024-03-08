@@ -1,0 +1,77 @@
+{%extends "base.html"%}
+{%load static%}
+{%block title%}Inspirational-motivational quotes and blogs.{%endblock%}
+
+{%block meta%}
+<meta name="keywords" content="Inspirational and motivational quotes and blogs.">
+<meta name="description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
+<meta property="og:url" content="https://motivativequotes.com/blogs/all" />
+<meta property="og:title" content="Inspirational and motivational quotes and blogs." />
+<meta property="og:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal." />
+<meta property="og:image"  content="https://motivativequotes.com/static/web.jpg"/>
+<meta name="twitter:title" content="Inspirational and motivational quotes and blogs.">
+<meta name="twitter:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
+<meta name="twitter:image" content="https://motivativequotes.com/static/web.jpg">
+<meta name="twitter:card" content="summary_large_image">
+{%endblock%}
+
+{%block styles%}<link rel="stylesheet" href="{%static 'styles/blogs.css'%}?{% now 'U' %}">{%endblock%}
+
+{%block mainContent%}
+
+<p class="head">Recent Posts</p>
+
+
+<div class="articles">
+
+    {%for blog in blogs%}
+<article>
+    <a href="{%url 'blog-details' blog.slug%}"> <img class="art_img" src="{{blog.featuredImage.url}}" alt="{{blog.title}}"></a>
+    <a class="tags">{{blog.category}}</a>
+    <a class="title_link" href="{%url 'blog-details' blog.slug%}">{{blog.title}}</a>
+    <p class="views">
+        <span style="display: flex;align-items: center;">
+        <span class="material-icons-outlined">visibility</span>
+        <span style="margin-left: 0.5rem;">{{blog.claps}}</span>
+        </span>
+        <span class="spacing_">/</span>
+        <span>{{blog.createdAt|date}}</span>
+        <span class="spacing_">/</span>
+        <span>BY ADMIN</span>
+    </p>
+</article>
+
+{%empty%}
+<div>
+  <span>
+    Thanks for your interest 😄. The articles will be uploaded soon.
+  </span>
+  <br>
+  <div style="margin-top: 1.5rem;">
+    <a href="/"><i class="fas fa-arrow-left"></i> Explore Others</a>
+  </div>
+</div>
+{%endfor%}
+
+</div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if blogs.has_previous %}
+            <a href="?page=1"> First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <a href="#" class="current" style="background: #6b3b3b8c;">
+             {{ blogs.number }} of {{ blogs.paginator.num_pages }}
+        </a>
+
+        {% if blogs.has_next %}
+            <a href="?page={{ blogs.next_page_number }}">Next</a>
+            <a href="?page={{ blogs.paginator.num_pages }}">Last</a>
+        {% endif %}
+    </span>
+  </div>
+
+{%endblock%}

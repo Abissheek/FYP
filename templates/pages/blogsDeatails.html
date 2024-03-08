@@ -1,0 +1,57 @@
+{%extends "base.html"%}
+{%load static%}
+{%block title%}
+{{block.title}}
+{%endblock title%}
+
+{%block meta%}
+<meta name="keywords" content={{blog.keywords}}>
+<meta name="description" content={{blog.metaDesc}}>
+<meta property="og:url" content="https://motivativequotes.com/blog/{{blog.slug}}" />
+<meta property="og:title" content="{{blog.title}}" />
+<meta property="og:description" content="{{blog.metaDesc}}" />
+<meta property="og:image"  content="https://motivativequotes.com/images/{{blog.featuredImage}}"/>
+<meta name="twitter:title" content="{{blog.title}}">
+<meta name="twitter:description" content="{{blog.metaDesc}}">
+<meta name="twitter:image" content="https://motivativequotes.com/images/{{blog.featuredImage}}">
+<meta name="twitter:card" content="summary_large_image">
+{%endblock meta%}
+
+{%block styles%}
+<link rel="stylesheet" href="{%static 'style/blogdetails.css'%}?{%now 'U'%}">
+<link rel="stylesheet" href="{%static 'style/blog.css'%}?{%now 'U'%}">
+{%endblock styles%}
+
+{%block maincontent%}
+<article class="myArticle">
+    <h1 class="titleofblog" id="top">
+    {{blog.title}}
+</h1>
+    <div class="author_details">
+    <p> <span><i class="far fa-user"></i></span> <span>{{blog.author}}</span>  </p>
+    <p class="articleDate"> <span><i class="far fa-clock"></i></span> <span>{{blog.createdAt|date('Y-m-d H:i:s')}}</span></p>
+    <p><span>{{blog.category}}</span></p>
+  </div>
+    <img class="featuredImg" src="{{blog.featuredImage.url}}" alt="">
+    <div class="mainBody" id="articleID">
+    <div class="stylelinks_">
+      {{blog.body|safe}}
+    </div>
+<!--        <div class="claps__" data-blog-id = {{blog.id}}>-->
+<!--        <img src="{%static 'images/clapping.png'%}" alt="">-->
+<!--            <p class="blogLikeCount">{{blog.claps}} </p>-->
+<!--            <p class="blogLikeCount">Claps </p>-->
+<!--    </div>-->
+    <audio id="audio" src="{%static 'audioo.mp3'%}"></audio>
+        <div class="commentbox">
+            <h2>Comments</h2>
+            <div id="disqus_thread"></div>
+            <a href="#top" style="color:white;">
+                <div class="claps_">
+                    <i class="fas fa-arrow-up"></i>
+                    </div>
+            </a>
+
+        </div>
+</article>
+{%endblock maincontent%}

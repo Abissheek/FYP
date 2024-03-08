@@ -1,0 +1,167 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block title%}Inspirational and motivational quotes and blogs.{%endblock%}
+
+{%block meta%}
+<meta name="keywords" content="Inspirational and motivational quotes and blogs.">
+<meta name="description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
+
+<meta property="og:url" content="https://motivativequotes.com" />
+<meta property="og:title" content="Inspirational and motivational quotes and blogs." />
+<meta property="og:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal." />
+<meta property="og:image"  content="https://motivativequotes.com/static/web.jpg"/>
+
+<meta name="twitter:title" content="Inspirational and motivational quotes and blogs.">
+<meta name="twitter:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
+<meta name="twitter:image" content="https://motivativequotes.com/static/web.jpg">
+<meta name="twitter:card" content="summary_large_image">
+{%endblock%}
+
+{%block styles%}<link rel="stylesheet" href="{%static 'style/index.css'%}?{% now 'U' %}">{%endblock%}
+
+{%block mainContent%}
+
+<h3 class="title__">Popular Quotes Category</h3>
+
+<section class="myCategoriesList">
+
+   <div class="gridCategory commonDivs">
+    {%for quoteCategory in myCategories%}
+    <div class="categoryBox" data-category={{quoteCategory.slug}}>
+        <img src="{{quoteCategory.img.url}}" alt="birthday category wishes">
+        <h3>{{quoteCategory.name}}</h3>
+    </div>
+    {%endfor%}
+   </div>
+
+   <div class="adsSection">
+
+    <section class="search">
+        <form action="'search'">
+           <i class="material-icons">search</i>
+            <input name='q' type="text" required placeholder="Search..">
+        </form>
+
+       </section>
+
+    <div class="adsContainer">
+        <!-- <img src="{%static "images/thumbnails/ads.png"%}" alt=""> -->
+        <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_uqcbmc4h.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+
+    </div>
+
+   </div>
+
+</section>
+
+<div class="mob_add">
+
+</div>
+
+
+<section class="newsletter">
+    <h3>Subscribe to us</h3>
+    <p>Stay motivated, get daily quotes straight to your email for free</p>
+    <form action="/" class="newsForm" method="POST">
+        {%csrf_token%}
+        <input type="email" required name="email" placeholder="Your favourite email" style="margin-left: 0;">
+        <button type="submit">Subscribe</button>
+    </form>
+</section>
+
+<!-- Most Loved Quotes -->
+
+<h3 class="title__">Recommended Quotes</h3>
+
+<main class="lovedquotes">
+
+    {%for quote in recommendedQuotes%}
+    <div class="quote">
+    <section class="quoteWithImage" }>
+     <img src="{%static 'images/category/left-quote.png'%}" alt="" class="quoteImg">
+     <audio src="{%static 'audio.mp3'%}"></audio>
+     <p class="myquote">{{quote.quote}}</p>
+    </section>
+     <div class="copylike">
+        <button class="like_" data-quote-id={{quote.id}}><span>{{quote.likes}}</span>  <i class="far fa-heart"></i> </button>
+        <button class="copy_ animate__animated" data-quote-id={{quote.id}} data-quote-text= "{{quote.quote}}" >COPY <i class="far fa-copy"></i>  </button>
+    </div>
+    <audio id="audio" src="{%static 'audio.mp3'%}"></audio>
+    </div>
+    {%empty%}
+    <h3 style="margin-bottom:30vh;font-weight: 500;">Quotes related to this category will be available soon.</h3>
+    {%endfor%}
+
+</main>
+
+
+<!-- <div class="explore_more">
+    <button>Explore More</button>
+</div> -->
+
+<h3 class="title__">Recent Articles</h3>
+
+
+<section class="myCategoriesList">
+
+   <div class="commonDivs">
+    {%for blog in recentBlogs%}
+
+    <article class="articleCard">
+
+        <h2><a href="blog-details" class="classTitle"></a></h2>
+        <div class="author_details">
+            <p> <span><i class="far fa-user"></i></span>  </p>
+            <p class="articleDate"> <span><i class="far fa-clock"></i></span> <span> </span></p>
+        </div>
+
+        <div class="article_details">
+            <a href="blog-details"><img loading="lazy" src="{{blog.featuredImage.url}}" alt=""></a>
+            <div>
+                <p>  {{blog.metaDesc}} ...</p>
+                <!-- <a href="{%url "blog-details" blog.slug%}" class="more">Read more</a> -->
+            </div>
+        </div>
+
+    </article>
+
+    {%endfor%}
+   </div>
+
+   <div class="adsSection">
+
+    <div class="adsContainer_mini">
+     <!-- <p>Ads Section</p> -->
+     <!-- <img src="{%static "images/thumbnails/ads2.png"%}" alt=""> -->
+     <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_wbvgzbuk.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+    </div>
+    <p style="font-weight: 600;margin: 1rem 0;">Tags</p>
+    <div class="tags">
+       <a href="#" onclick="showAlert('Happy Life')">Happy Life</a>
+        <a href="">Rich</a>
+        <a href="">Health</a>
+        <a href="">Jokes</a>
+        <a href="">Friends</a>
+        <a href="">Animals</a>
+    </div>
+
+   </div>
+
+</section>
+
+
+
+<h3 class="title__">Words from world's inspirational personalities</h3>
+
+
+{%endblock%}
+
+{%block myscript%}
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script>
+var showAlert=function showAlert(category) {
+     alert('Clicked on ' + category);
+}
+</script>
+{%endblock%}

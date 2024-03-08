@@ -16,11 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Quotes.url')),
+    path('', include('Index.urls')),
+    path('blog/', include('Blogs.urls')),
+
 
 
 ]
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+
+admin.site.site_header = "Motivative-Quotes Administration"
+admin.site.site_title = "Motivative-Quotes Admin Portal"
+admin.site.index_title = "Welcome to Motivative-Quotes and Blogs Admin Site"
