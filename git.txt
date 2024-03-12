@@ -1,0 +1,7 @@
+1. git init
+2. git	add .
+3. git	commit -m "Commit message"
+4. git	branch -M main (if branch is master/main see that and change the branch)
+5. git	remote add origin <Github link>
+6. git	push -u origin main/master
+7. git push --set-upstream origin master

@@ -1,0 +1,109 @@
+.contact_form{
+    display:flex;
+    overflow: hidden;
+    margin:5% 20%;
+    font-family: 'Open Sans',sans-serif;
+    -webkit-box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 15%);
+            -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 15%);
+}
+.say_hello{
+    background-color: #000000de;
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.contact_form form{
+    padding: 40px 5%;
+    padding-top: 10px;
+    background-color:white;
+    flex: 2;
+}
+
+.contact_form form input{
+    margin:20px 0;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    color: black;
+    width: 100%;
+   font-weight: bold;
+   font-size: 16px;
+}
+
+.contact_form form p{
+    position: relative;
+  }
+
+.contact_form form input:focus::placeholder{
+    color: transparent;
+
+}
+
+.contact_form form textarea:focus{
+    border-bottom: 2px solid black;
+
+}
+.contact_form form input:focus{
+    border-bottom: 2px solid black;
+
+}
+
+.contact_form form textarea{
+    margin:10px 0;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #3524b5;
+    color: #3524b5;
+    width: 105%;
+    resize: none;
+   font-size: 16px;
+   font-weight: bold;
+}
+.contact_form form input::placeholder,.contact_form form textarea::placeholder{
+    font-family: 'PT Sans',sans-serif;
+   font-size: 16px;
+   color: rgba(0, 0, 0, 0.719);
+   font-weight: bold;
+}
+.get__{
+    margin: 10px 0;
+}
+.submit{
+    border: 1px solid #3524b5;
+    font-family: 'Open Sans',sans-serif;
+    background: none;
+    margin: 15px 0;
+    border-radius:3px;
+    transition: .3s linear;
+    color: #3524b5;
+    font-weight: bold;
+}
+.submit:hover{
+    background:#3524b5 ;
+    color: white!important;
+    transition: .3s linear;
+    cursor: pointer;
+}
+@media(max-width:1300px){
+    .contact_form{
+        margin: 5% 12%;
+    }
+}
+@media(max-width:1300px){
+    .contact_form{
+        margin:3rem 3%;
+    }
+}
+
+@media(max-width:870px){
+   .say_hello{
+       display: none;
+   }
+}

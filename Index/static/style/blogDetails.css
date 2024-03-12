@@ -1,0 +1,181 @@
+.myArticle{
+    margin: 0 20%;
+    background-color: white;
+    padding: 2rem;
+}
+html {
+    scroll-behavior: smooth;
+  }
+
+.myArticle h1,.myArticle h2, .myArticle h3, .myArticle h4{
+    margin: 1rem 0;
+    color: #212121;
+}
+
+.titleofblog{
+    font-size: 2rem;
+}
+
+.author_details{
+    display: flex;
+    margin: 0.5rem 0;
+}
+
+.author_details i{
+    font-size: 0.8rem;
+}
+
+.author_details p{
+    color: gray;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.featuredImg{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.mainBody{
+    line-height: 1.8em;
+    text-align: justify;
+    padding:2rem 0;
+    padding-top: 0;
+}
+
+.mainBody p,.mainBody a{
+    font-size: 1.2rem;
+}
+
+
+.mainBody img{
+    height: auto!important;
+    width: fit-content!important;
+    max-width: 100%!important;
+    margin: 1rem 0;
+  }
+
+.mainBody p{
+    /* color: #1b1818; */
+    color: #1b1818d1;
+}
+
+
+.stylelinks_ a{
+    font-size: 1.2rem;
+    color: #1b1818d1;
+    background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+    background-repeat: no-repeat;
+    background-size: 100% 0.1em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+.stylelinks_ a:hover{
+    background-size: 100% 88%;
+}
+
+.commentBox{
+    margin: 3rem 0;
+}
+
+.social_shares{
+    position: absolute;
+    top: 40%;
+    left: 20%;
+}
+
+.social_shares a{
+   margin: 0.05rem 0;
+   display: block;
+}
+
+.social_shares .fab{
+    display: flex;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.social_shares .fab:hover {
+    opacity: 0.7;
+}
+
+.social_shares .fa-facebook-f{
+    background: #3B5998;
+    color: white;
+  }
+  .social_shares .fa-instagram {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    color: white;
+  }
+  .social_shares .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  .social_shares .fa-linkedin-in {
+    background: #007bb5;
+    color: white;
+  }
+
+.claps_{
+    height:40px;
+    width: 40px;
+    background-color: #0000009c;
+    position: fixed;
+    bottom:10%;
+    right: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.claps__{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    width: fit-content;
+}
+.claps_:hover{
+    background: black;
+}
+.claps__ img{
+    height: 40px!important;
+    width: 40px!important;
+}
+
+.claps__ p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 1.5rem;
+}
+
+
+@media (max-width:1300px){
+    .myArticle {
+        margin: 0 3%;
+    }
+    .claps_ {
+        right: 3%;
+    }
+
+  }
+
+  @media (max-width:450px){
+   .myArticle{
+       padding: 1rem;
+   }
+   .mainBody p, .mainBody a {
+    font-size: 1.1rem;
+}
+}
+

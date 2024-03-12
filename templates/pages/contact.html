@@ -1,0 +1,54 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block title%}Contact | Motivative Quotes{%endblock%}
+
+{%block meta%}
+<meta name="keywords" content="contact motivative quotes admin author">
+<meta name="description" content="You can contact motivative quotes author from this page">
+
+<meta property="og:url" content="https://motivativequotes.com/contact/" />
+<meta property="og:title" content="Contact Us | Motivative Quotes" />
+<meta property="og:description" content="You can contact motivative quotes author from this page" />
+<meta property="og:image"  content="https://motivativequotes.com/static/web.jpg"/>
+
+<meta name="twitter:title" content="Contact Us | Motivative Quotes">
+<meta name="twitter:description" content="You can contact motivative quotes author from this page">
+<meta name="twitter:image" content="https://motivativequotes.com/static/web.jpg">
+<meta name="twitter:card" content="summary_large_image">
+{%endblock%}
+
+
+{%block styles%}
+<link rel="stylesheet" href="{%static 'styles/contact.css'%}?{% now 'U' %}">
+<style>
+    body{
+        background: white!important;
+    }
+</style>
+{%endblock%}
+
+{%block mainContent%}
+<div class="contact_form">
+
+    <div class="say_hello">
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_3vbOcw.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+    </div>
+
+
+    <form action="" method="POST">
+        <h1 class="get__">Get in Touch</h1>
+        {%csrf_token%}
+        {{form.as_p}}
+        <button class="submit" type="submit" style="float: right;padding: 10px 20px;">Submit <i style="margin-left: 5px;" class="fas fa-paper-plane"></i></button>
+    </form>
+
+    
+</div>
+{%endblock%}
+
+
+{%block myscript%}
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+{%endblock%}
+
