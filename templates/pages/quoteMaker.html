@@ -1,0 +1,164 @@
+{%extends "base.html"%}
+{%load static%}
+{%block title%}Best free online quote creator and generator{%endblock%}
+
+{%block meta%}
+<meta name="keywords" content="quote generator, quote maker free online">
+<meta name="description" content="You can generate quote for free in your own design.">
+
+<meta property="og:url" content="https://motivativequotes.com/quote-maker/" />
+<meta property="og:title" content="Best free online quote creator and generator" />
+<meta property="og:description" content="You can generate quote for free in your own design." />
+<meta property="og:image"  content="https://motivativequotes.com/static/web.jpg"/>
+
+<meta name="twitter:title" content="Best free online quote creator and generator">
+<meta name="twitter:description" content="You can generate quote for free in your own design.">
+<meta name="twitter:image" content="https://motivativequotes.com/static/web.jpg">
+<meta name="twitter:card" content="summary_large_image">
+{%endblock%}
+
+{%block styles%}<link rel="stylesheet" href="{%static 'styles/quoteMaker.css'%}?{% now 'U' %}">{%endblock%}
+
+{%block mainContent%}
+
+<div class="mainEditContainer">
+    <div class="layer_edit"></div>
+
+    <div class="edit">
+
+
+        <div class="editOptions">
+
+            <h3>Enter your quote</h3>
+            <div class="slidecontainer">
+                <input type="text" id="quote_id">
+            </div>
+
+            <h3>Author</h3>
+            <div class="slidecontainer">
+                <input type="text" id="author_id">
+            </div>
+
+            <h3>Overlay Color</h3>
+            <div class="slidecontainer">
+                <input type="color" value="#000000" class="slider1" id="colorSelector">
+                <span id="colorShow">#000000</span>
+            </div>
+
+            <h3>Overlay Opacity</h3>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="10" value="7" class="slider" id="overLayRange">
+            </div>
+
+
+            <h3>Select your own image</h3>
+            <div class="image__">
+                <input type="file" accept="image/*" style="display: none;" name="image" id="file"  onchange="loadFile(event)">
+                <img id="output_" alt="">
+                <p> <i class="far fa-images"></i> Select your own background image</p>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <!-- <button>Copy <i class="far fa-copy"></i></button> -->
+            <button class="secondbtn_">Download Image <i class="fas fa-download"></i></button>
+        </div>
+
+    </div>
+
+    <div class="myArticle">
+
+        <div class="textEditor edit_quote_ active_">
+            <select name="" class="fonts_list" id="fonts_list_quote"></select>
+            <button class="decFont">-</button><input class="showSize" type="text"><button class="incFont">+</button>
+            <button class="alignLeft"><i class="fas fa-align-left"></i></button> <button class="alignCenter"><i class="fas fa-align-center"></i></button><button class="alignRight"><i class="fas fa-align-right"></i></button>
+            <button class="fontColor cs_quote">A</button>
+            <input type="color" class="selectColor" value="#ffffff">
+            <button class="fontBold">B</button>
+            <button class="fontItalic">I</button>
+        </div>
+
+        <div class="textEditor edit_author_">
+            <select name="" class="fonts_list" id="fonts_list_author"></select>
+            <button class="decFont">-</button><input class="showSize" type="text"><button class="incFont">+</button>
+            <button class="alignLeft"><i class="fas fa-align-left"></i></button> <button class="alignCenter"><i class="fas fa-align-center"></i></button><button class="alignRight"><i class="fas fa-align-right"></i></button>
+            <button class="fontColor cs_author">A</button>
+            <input type="color" class="selectColor" value="#ffffff">
+            <button class="fontBold">B</button>
+            <button class="fontItalic">I</button>
+        </div>
+
+        <div class="quoteImg" id="capture">
+            <div class="overlay"></div>
+            <img class="featuredImage" src="" alt="">
+            <div class="txt">
+              <section>
+               <p class="quote__ "></p>
+                <p class="author__"></p>
+              </section>
+            </div>
+        </div>
+
+        <div class="edit__all">
+            <span class="material-icons">edit</span>
+        </div>
+
+        <div class="edit__all download_"  style="left: 3%;">
+            <span class="material-icons"> download </span>
+        </div>
+        </div>
+</div>
+
+
+
+
+{%endblock%}
+
+
+
+{%block myscript%}
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+    const store = JSON.parse(window.localStorage.getItem('imageData'))
+    if(!store){
+      const imageData = {
+        quote : "{{quote.quote}}",
+        author : "{{quote.author}}",
+        backgroundImage : "{{quote.backgroundImage.url}}",
+        overLayColor : '#000000',
+        overLayOpacity : '2',
+        fontFamilyQuote : 'Kalam',
+        fontFamilyAuthor : 'Kalam',
+        quoteFontSize : '40',
+        authorFontSize : '24',
+        quoteAlignment : 'center',
+        authorAlignment : 'center',
+        quoteFontColor : '#ffffff',
+        authorFontColor : '#ffffff',
+        quoteFontBold : '400',
+        authorFontBold : '400',
+        quoteFontItalic : 'normal',
+        authorFontItalic : 'normal'
+    }
+    window.localStorage.setItem('imageData',JSON.stringify(imageData))
+}
+</script>
+<script src="{%static 'quoteMaker.js'%}?{% now 'U' %}"></script>
+
+<script>
+    const layerEdt = document.querySelector('.layer_edit')
+    const editMenu = document.querySelector('.edit')
+    const showEdit = document.querySelector('.edit__all')
+        layerEdt.addEventListener('click',()=>{
+          editMenu.style.display='none'
+          layerEdt.style.display='none'
+        })
+        showEdit.addEventListener('click',()=>{
+          editMenu.style.display='block'
+          layerEdt.style.display='block'
+        })
+</script>
+{%endblock%}
+
+

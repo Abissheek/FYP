@@ -1,0 +1,105 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block title%}Motivative Quotes : quotes category{%endblock%}
+
+{%block meta%}
+<meta name="keywords" content="Inspirational and motivational quotes and blogs.">
+<meta name="description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
+
+<meta property="og:url" content="https://motivativequotes.com/quote/category/{{category}}" />
+<meta property="og:title" content="Inspirational and motivational quotes and blogs." />
+<meta property="og:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal." />
+<meta property="og:image"  content="https://motivativequotes.com/static/web.jpg"/>
+
+<meta name="twitter:title" content="Inspirational and motivational quotes and blogs.">
+<meta name="twitter:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
+<meta name="twitter:image" content="https://motivativequotes.com/static/web.jpg">
+<meta name="twitter:card" content="summary_large_image">
+{%endblock%}
+
+{%block styles%}
+<link rel="stylesheet" href="{%static 'styles/index.css'%}?{% now 'U' %}">
+{%endblock%}
+
+{%block mainContent%}
+
+<h3 class="title___">{{category}} Quotes</h3>
+<main class="lovedquotes">
+ 
+    {%for quote in allquotes%}
+    <div class="quote">
+    <section class="quoteWithImage"  data-quote-id={{quote.id}}>
+     <img src="{%static 'images/category/left-quote.png'%}" alt="" class="quoteImg">
+     <audio src="{%static 'audio.mp3'%}"></audio>
+     <p class="myquote">{{quote.quote}}</p>
+    </section>
+     <div class="copylike">
+        <button class="like_" data-quote-id={{quote.id}}><span>{{quote.likes}}</span>  <i class="far fa-heart"></i> </button>
+        <button class="copy_ animate__animated" data-quote-id={{quote.id}} data-quote-text= "{{quote.quote}}" >COPY <i class="far fa-copy"></i>  </button>
+    </div>
+    <audio id="audio" src="{%static 'audio.mp3'%}"></audio>
+    </div>
+    {%empty%}
+    <h3 style="margin-bottom:30vh;font-weight: 500;">Quotes related to this category will be available soon.</h3>
+    {%endfor%}
+
+</main>
+{%endblock%}
+
+
+{%block myscript%}
+<script>
+    //quote detail
+    const quotes = document.querySelectorAll(".quote section")
+    quotes.forEach((quote)=> {
+	const id = quote.getAttribute("data-quote-id")
+    quote.addEventListener("click",(e)=>{
+        window.location.href="/quote/"+id
+    });
+    });
+
+    function play() {
+        var audio = document.getElementById("audio");
+        audio.currentTime = 0
+        audio.play();
+      }
+
+
+    //like quote
+    const quoteToLike = document.querySelectorAll(".like_")
+    quoteToLike.forEach((x)=> {
+	const id = x.getAttribute("data-quote-id")
+    x.addEventListener("click",(e)=>{
+        const likeQuote = async (quoteID) =>{
+        const res = await fetch(`/quote/like-quote/${quoteID}`)
+        const data = await res.json()
+        x.firstElementChild.textContent=data.likes
+       } 
+        likeQuote(id)
+        play()
+    });
+    });
+
+    //copy quote
+    const quoteToCopy = document.querySelectorAll(".copy_")
+    quoteToCopy.forEach((x)=> {
+	const text = x.getAttribute("data-quote-text")
+	const id = x.getAttribute("data-quote-id")
+    x.addEventListener("click",(e)=>{
+        x.classList.add('animate__tada')
+        navigator.clipboard.writeText(text);
+        setTimeout(()=>{
+        x.classList.remove('animate__tada')
+        },500)
+        const CopyQuote = async (quoteID) =>{
+           await fetch(`/quote/copy/${quoteID}`)
+       } 
+       CopyQuote(id)
+    });
+    });
+
+  
+
+</script>
+{%endblock%}
