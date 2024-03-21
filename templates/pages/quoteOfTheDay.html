@@ -1,0 +1,65 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block title%}Motivative Quotes - Quote of the day{%endblock%}
+
+{%block meta%}
+<meta name="keywords" content="quote generator, quote maker free online">
+<meta name="description" content="You can get quote for free daily.">
+
+<meta property="og:url" content="https://motivativequotes.com/quote/quote-of-the-day/" />
+<meta property="og:title" content="Motivative Quotes - Quote of the day" />
+<meta property="og:description" content="You can get quote for free daily." />
+<meta property="og:image"  content="https://motivativequotes.com/static/web.jpg"/>
+
+<meta name="twitter:title" content="Motivative Quotes - Quote of the day">
+<meta name="twitter:description" content="You can get quote for free daily.">
+<meta name="twitter:image" content="https://motivativequotes.com/static/web.jpg">
+<meta name="twitter:card" content="summary_large_image">
+{%endblock%}
+
+{%block styles%}
+<link rel="stylesheet" href="{%static 'styles/quoteOfTheDay.css'%}?{% now 'U' %}">
+<style>
+
+</style>
+{%endblock%}
+
+{%block mainContent%}
+
+<div class="quoteToTheDay">
+    <div class="day_quote">
+      <h1 class="quotee">{{quote}}</h1>
+      <p><span class="authh"> - {{author}}</span></p>
+      <section class="loader disable"><div class="pulsing-2"></div></section>
+      <button class="button_ ">Generate next <i class="fas fa-sync" style="margin-left: 10px;font-size: medium;"></i></button>
+    </div>
+</div>
+
+{%endblock%}
+
+
+{%block myscript%}
+<script>
+    const button = document.querySelector('.button_')
+    const loader = document.querySelector('.loader')
+
+
+    button.addEventListener('click',()=>{
+        button.classList.add('disable')
+        loader.classList.remove('disable')
+        setTimeout(()=>{
+            const likeQuote = async () =>{
+            const res = await fetch("/quote/give-me-quote")
+            const data = await res.json()
+            button.classList.remove('disable')
+            loader.classList.add('disable')
+            document.querySelector(".quotee").textContent = data.quote
+            document.querySelector(".authh").textContent = data.author ? '- '+data.author : ""
+            }
+            likeQuote()
+        },1000)
+    })
+
+</script>
+{%endblock%}

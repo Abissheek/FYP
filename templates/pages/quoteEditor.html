@@ -1,0 +1,157 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block title%}MotivativeQuotes{%endblock%}
+
+ {%block styles%}
+ <link rel="stylesheet" href="{%static 'styles/quoteMaker.css'%}?{% now 'U' %}">
+ {%endblock%}
+
+{%block mainContent%}
+<div id="mainContainerEditor"></div>
+{%endblock%}
+
+{%block myscript%}
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+const QuoteEditor = () => {
+
+    const[quote,setQuote] = React.useState("")
+    const[author,setAuthor] = React.useState("")
+    const[blurValue,setBlurValue] = React.useState(2)
+    const[overLayValue,setOverLayValue] = React.useState(7)
+    const[overLayColor,setOverLayColor] = React.useState("#000000")
+
+    const changeQuote = (e)=>{
+        setQuote(e.target.value)
+
+    }
+
+    const changeAuthor = (e)=>{
+        setAuthor(e.target.value)
+    }
+
+    const changeBlurValue = (e)=>{
+        setBlurValue(e.target.value)
+    }
+
+    const changeOverLayValue = (e)=>{
+        setOverLayValue(e.target.value)
+    }
+
+    const changeOverLayColor = (e)=>{
+        setOverLayColor(e.target.value)
+    }
+
+    // *************************font family options and set in select field******************************
+        const fontOptions = [
+        'Amita',
+        'Anton',
+        'Bebas Neue',
+        'Berkshire Swash',
+        'Bubblegum Sans',
+        'Bungee',
+        'Bungee Inline',
+        'Bungee Shade',
+        'Dancing Script',
+        'Fredericka the Great',
+        'Just Me Again Down Here',
+        'Kalam',
+        'Lobster Two',
+        'Lora',
+        'Metal Mania',
+        'Monofett',
+        'Montserrat',
+        'Oswald',
+        'Pacifico',
+        'Permanent Marker',
+        'Press Start 2P',
+        'PT Sans',
+        'Roboto',
+        'Roboto Slab',
+        'Rock Salt',
+        'Rubik Mono One',
+        'Sarpanch',
+        'Satisfy',
+        'Shadows Into Light',
+        'Tourney'
+    ]
+    // *************************END font family options and set in select field******************************
+
+// document.querySelector('.suman').style.opacity = 0
+
+return (
+<>
+<div className="mainEditContainer">
+
+    <div className="edit">
+        <div className="editOptions">
+            <h3 className="suman">Enter your quote</h3>
+            <div className="slidecontainer">
+                <input type="text" onChange={changeQuote} value={quote} id="quote_id"/>
+            </div>
+
+            <h3>Author</h3>
+            <div className="slidecontainer">
+                <input type="text" onChange={changeAuthor} value={author} id="author_id"/>
+            </div>
+
+            <h3>Background Blur</h3>
+            <div className="slidecontainer">
+                <input type="range" min="0" onChange={changeBlurValue} max="15" value={blurValue} className="slider" id="blurRange"/>
+            </div>
+
+            <h3>Overlay Color</h3>
+            <div className="slidecontainer">
+                <input type="color" onChange={changeOverLayColor} value={overLayColor} className="slider1" id="colorSelector"/>
+                <span id="colorShow">{overLayColor}</span>
+            </div>
+
+            <h3>Overlay Opacity</h3>
+            <div className="slidecontainer">
+                <input type="range" min="0" max="10" onChange={changeOverLayValue} value={overLayValue} className="slider" id="overLayRange"/>
+            </div>
+        </div>
+
+        <div className="buttons">
+            <button className="secondbtn_">Download Image <i className="fas fa-download"></i></button>
+        </div>
+    </div>
+
+    <div className="myArticle">
+        <div className="textEditor">
+            <select name="" id="fonts_list">
+                 {fontOptions.map(x=>{
+                    return (
+                         <option value={x} key={x}>{x}</option>
+                 )
+             })}
+            </select>
+            <button className="incFont">+</button><input  className="showSize" type="text"/><button className="decFont">-</button>
+            <button className="alignLeft"><i className="fas fa-align-left"></i></button> <button className="alignCenter"><i className="fas fa-align-center"></i></button><button className="alignRight"><i className="fas fa-align-right"></i></button>
+        </div>
+        <div className="quoteImg" id="capture">
+            <div className="overlay"></div>
+            <img className="featuredImage" src="/images/static/images/birthday_pyBisIE.jpg"/>
+            <div className="txt">
+                <section>
+                <p className="quote__">If you want to live a happy life, tie it to a goal, not to people or things.</p>
+                <p className="author__">- Ray Goforth</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</>
+);
+}
+
+      ReactDOM.render(<QuoteEditor />, document.getElementById('mainContainerEditor'))
+</script>
+{%endblock%}
