@@ -8,4 +8,3 @@ urlpatterns = [
     path("<slug:blogDetail>",views.BlogDetail.as_view(),name="blog-details"),
     path("clap-blog/<int:id>/",views.ClapBlog,name='clap-blog'),
 ]
-

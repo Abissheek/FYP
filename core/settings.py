@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'Index',
     'Blogs',
     'tinymce',
+    'Communication',
+    'taggit',
+
 ]
 
 MIDDLEWARE = [
