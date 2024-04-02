@@ -1,167 +1,212 @@
-{%extends "base.html"%}
+<!DOCTYPE html>
 {%load static%}
+<html lang="en">
 
-{%block title%}Inspirational and motivational quotes and blogs.{%endblock%}
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
 
-{%block meta%}
-<meta name="keywords" content="Inspirational and motivational quotes and blogs.">
-<meta name="description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
-
-<meta property="og:url" content="https://motivativequotes.com" />
-<meta property="og:title" content="Inspirational and motivational quotes and blogs." />
-<meta property="og:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal." />
-<meta property="og:image"  content="https://motivativequotes.com/static/web.jpg"/>
-
-<meta name="twitter:title" content="Inspirational and motivational quotes and blogs.">
-<meta name="twitter:description" content="Motivative Quotes produces amazing content that motivate you to achieve your goal.">
-<meta name="twitter:image" content="https://motivativequotes.com/static/web.jpg">
-<meta name="twitter:card" content="summary_large_image">
-{%endblock%}
-
-{%block styles%}<link rel="stylesheet" href="{%static 'style/index.css'%}?{% now 'U' %}">{%endblock%}
-
-{%block mainContent%}
-
-<h3 class="title__">Popular Quotes Category</h3>
-
-<section class="myCategoriesList">
-
-   <div class="gridCategory commonDivs">
-    {%for quoteCategory in myCategories%}
-    <div class="categoryBox" data-category={{quoteCategory.slug}}>
-        <img src="{{quoteCategory.img.url}}" alt="birthday category wishes">
-        <h3>{{quoteCategory.name}}</h3>
-    </div>
-    {%endfor%}
-   </div>
-
-   <div class="adsSection">
-
-    <section class="search">
-        <form action="'search'">
-           <i class="material-icons">search</i>
-            <input name='q' type="text" required placeholder="Search..">
-        </form>
-
-       </section>
-
-    <div class="adsContainer">
-        <!-- <img src="{%static "images/thumbnails/ads.png"%}" alt=""> -->
-        <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_uqcbmc4h.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
-
-    </div>
-
-   </div>
-
-</section>
-
-<div class="mob_add">
-
-</div>
+    {%block meta%}
+    {%endblock%}
+    
+    <link href="{%static 'images/category/l.png'%}" rel="shortcut icon" type="image/png">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=PT+Sans:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Kalam&display=swap" rel="stylesheet">
 
 
-<section class="newsletter">
-    <h3>Subscribe to us</h3>
-    <p>Stay motivated, get daily quotes straight to your email for free</p>
-    <form action="/" class="newsForm" method="POST">
-        {%csrf_token%}
-        <input type="email" required name="email" placeholder="Your favourite email" style="margin-left: 0;">
-        <button type="submit">Subscribe</button>
-    </form>
-</section>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amita&family=Anton&family=Bebas+Neue&family=Berkshire+Swash&family=Bubblegum+Sans&family=Bungee&family=Bungee+Inline&family=Bungee+Shade&family=Dancing+Script:wght@400;500&family=Fredericka+the+Great&family=Just+Me+Again+Down+Here&family=Kalam&family=Lobster+Two&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Metal+Mania&family=Monofett&family=Montserrat:wght@300;400&family=Oswald:wght@400;600&family=PT+Sans&family=Pacifico&family=Permanent+Marker&family=Poppins:wght@300;400;500&family=Press+Start+2P&family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400&family=Rock+Salt&family=Rubik+Mono+One&family=Sarpanch&family=Satisfy&family=Shadows+Into+Light&family=Tourney&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
-<!-- Most Loved Quotes -->
+    <link href="{%static 'styles/base.css'%}?{% now 'U' %}" rel="stylesheet">
+    
+    {%block styles%}
+    {%endblock%}
+</head>
 
-<h3 class="title__">Recommended Quotes</h3>
-
-<main class="lovedquotes">
-
-    {%for quote in recommendedQuotes%}
-    <div class="quote">
-    <section class="quoteWithImage" }>
-     <img src="{%static 'images/category/left-quote.png'%}" alt="" class="quoteImg">
-     <audio src="{%static 'audio.mp3'%}"></audio>
-     <p class="myquote">{{quote.quote}}</p>
-    </section>
-     <div class="copylike">
-        <button class="like_" data-quote-id={{quote.id}}><span>{{quote.likes}}</span>  <i class="far fa-heart"></i> </button>
-        <button class="copy_ animate__animated" data-quote-id={{quote.id}} data-quote-text= "{{quote.quote}}" >COPY <i class="far fa-copy"></i>  </button>
-    </div>
-    <audio id="audio" src="{%static 'audio.mp3'%}"></audio>
-    </div>
-    {%empty%}
-    <h3 style="margin-bottom:30vh;font-weight: 500;">Quotes related to this category will be available soon.</h3>
-    {%endfor%}
-
-</main>
+<body>
 
 
-<!-- <div class="explore_more">
-    <button>Explore More</button>
-</div> -->
-
-<h3 class="title__">Recent Articles</h3>
-
-
-<section class="myCategoriesList">
-
-   <div class="commonDivs">
-    {%for blog in recentBlogs%}
-
-    <article class="articleCard">
-
-        <h2><a href="blog-details" class="classTitle"></a></h2>
-        <div class="author_details">
-            <p> <span><i class="far fa-user"></i></span>  </p>
-            <p class="articleDate"> <span><i class="far fa-clock"></i></span> <span> </span></p>
-        </div>
-
-        <div class="article_details">
-            <a href="blog-details"><img loading="lazy" src="{{blog.featuredImage.url}}" alt=""></a>
-            <div>
-                <p>  {{blog.metaDesc}} ...</p>
-                <!-- <a href="{%url "blog-details" blog.slug%}" class="more">Read more</a> -->
+    <!-- header start from here -->
+    <header>
+        <div class="when_sm">
+            <div class="menu__ real_mn">
+                <span class="material-icons"> menu </span>
+                <!-- <span class="material-icons">drag_handle </span> -->
             </div>
+            <div class="menu__ real_mn_drag">
+                <span class="material-icons">drag_handle </span>
+            </div>
+            <h1 style="position: relative;">
+                <a href="{%url 'index'%}"> <span><span class="big">M</span><span class="small">OTIVATIVE</span><span
+                            class="big">Q</span><span class="small">UOTES</span></span> </a>
+            </h1>
         </div>
 
-    </article>
+        <nav>
+            <ul class="big_nav">
+                <li><a href="{%url 'quote-of-the-day'%}">Quote of the Day</a></li>
+                <li><a href="{%url 'quote-maker'%}">Quote Maker</a></li>
+                <li><a href="{%url 'all-blogs'%}">Blog</a></li>
+                <li><a href="{%url 'contact'%}">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="menu__ sh" id="search">
+            <span class="material-icons"> search </span>
+        </div>
+    </header>
 
+    <!-- {% if messages %}
+    {% for message in messages %}
+    <div class="alert__box">
+        <section>
+            <i class="fas fa-times"></i>
+            <p class="{{message.tags}} alert__p">{{message}}</p>
+        </section>
+
+    </div>
+    {% endfor %}
+    {% endif %} -->
+    {% if messages %}
+    {% for msg in messages%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Hey</strong> {{msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     {%endfor%}
-   </div>
+    {%endif%}
+    {%block mainContent%}
+    {%endblock%}
 
-   <div class="adsSection">
+    <div class="loader">
 
-    <div class="adsContainer_mini">
-     <!-- <p>Ads Section</p> -->
-     <!-- <img src="{%static "images/thumbnails/ads2.png"%}" alt=""> -->
-     <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_wbvgzbuk.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
-    </div>
-    <p style="font-weight: 600;margin: 1rem 0;">Tags</p>
-    <div class="tags">
-       <a href="#" onclick="showAlert('Happy Life')">Happy Life</a>
-        <a href="">Rich</a>
-        <a href="">Health</a>
-        <a href="">Jokes</a>
-        <a href="">Friends</a>
-        <a href="">Animals</a>
     </div>
 
-   </div>
+    <!-- ======================footer===================================== -->
+    <footer>
 
-</section>
+        <div class="logo_quote">
+            <!--         
+        <h2>
+            <a href="{% url 'index' %}">
+                <span class="big">M</span>
+                <span class="small">OTIVATIVE</span>
+                <span class="big">Q</span>
+                <span class="small">UOTES🥰</span>
+            </a>
+        </h2>
+        -->
+
+            <!-- Modified HTML with proper formatting -->
+            <h2 style="position: relative;">
+                <a href="{% url 'index' %}">
+                    <span>
+                        <span class="big">M</span>
+                        <span class="small">OTIVATIVE</span>
+                        <span class="big">Q</span>
+                        <span class="small">UOTES</span>
+                    </span>
+                    <img alt="motivative quotes logo" height="35px" src="{% static 'images/category/l.png' %}"
+                        style="position: absolute; top: -5px;">
+                </a>
+            </h2>
+
+            <p>Believe you can and you're halfway there. - Theodore Roosevelt</p>
+
+        </div>
 
 
 
-<h3 class="title__">Words from world's inspirational personalities</h3>
+        <div class="site_links">
+            <h3>Links</h3>
+            <a href="{%url 'contact'%}">Contact Us</a>
+            <a href="">Sitemap</a>
+            <a href="">Privacy Policy</a>
+        </div>
+        <div class="connect_us">
+            <h3>Follow us on social media</h3>
+            <div class="socials">
+                <a href=""><i class="fab fa-facebook-square"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+            </div>
+
+        </div>
+
+    </footer>
+    <!-- footer end -->
 
 
-{%endblock%}
+    {%block myscript%}
+    {%endblock%}
+    <script>
+        
+        // try {
+        //     document.querySelector(".alert__box i").addEventListener('click', () => {
+        //         document.querySelector(".alert__box").style.display = "none"
+        //     })
+        // }
+        // catch (x) {
+        // }
 
-{%block myscript%}
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<script>
-var showAlert=function showAlert(category) {
-     alert('Clicked on ' + category);
-}
-</script>
-{%endblock%}
+        try {
+            document.querySelector("#search").addEventListener('click', () => window.location.href = "/blog/search/?q=''")
+        }
+        catch (u) { }
+
+        const menu = document.querySelector('.real_mn')
+        const header = document.querySelector('.miniHeader')
+        const menuDrag = document.querySelector('.real_mn_drag')
+        const menuSide = document.querySelector('.miniHeader div')
+
+        menu.addEventListener('click', () => {
+            header.style.display = 'flex'
+            menuDrag.style.display = 'flex'
+            menu.style.display = 'none'
+        })
+        menuDrag.addEventListener('click', () => hideMenu())
+        menuSide.addEventListener('click', () => hideMenu())
+
+        const hideMenu = () => {
+            header.style.display = 'none'
+            menuDrag.style.display = 'none'
+            menu.style.display = 'flex'
+        }
+
+
+
+    // for alert.
+    setTimeout(function(){
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert){
+            alert.remove();
+        });
+    },3000);
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
