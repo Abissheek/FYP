@@ -145,7 +145,7 @@
 
 .newsForm button:hover{
     cursor: pointer;
-    background: #3524b5b4;
+    background: #2ca32c;
 }
 
 .lovedquotes{
@@ -201,9 +201,11 @@
     border-bottom-right-radius: 10px;
 }
 
+
+
 .like_:hover{
 cursor: pointer;
-    background-color: #green;
+    background-color: #eeeeeed2;
     color: red;
 
 }
@@ -457,4 +459,32 @@ cursor: pointer;
     }
   }
 
+
+
+
+
+  @media (max-width:600px){
+    .gridCategory {
+        padding: 1rem;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+    }
+    .categoryBox{
+        height: 120px;
+    }
+    .title__ {
+        margin: 1.5rem 0;
+        font-size: 1.3rem;
+    }
+    .newsletter {
+        padding: 2rem 1rem;
+    }
+    .newsForm{
+        display: grid;
+    }
+    .newsForm input[type=email] {
+        margin: 1rem 0rem;
+    }
+
+  }
 

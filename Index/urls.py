@@ -2,7 +2,7 @@ from django.urls import path
 from .views import HomeView
 from Communication.views import ContactView
 from Blogs.models import Blog
-# from Quotes.models import Quote
+from Quotes.models import Quote
 
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
@@ -26,9 +26,9 @@ blog_items = {
     'date_field': 'createdAt',
 }
 
-# quote_items = {
-#     'queryset': Quote.objects.all(),
-# }
+quote_items = {
+    'queryset': Quote.objects.all(),
+}
 
 urlpatterns = [
     path('', HomeView.as_view(), name='index'),
@@ -37,7 +37,7 @@ urlpatterns = [
          {
              'sitemaps': {
                  'blog': GenericSitemap(blog_items, priority=0.6, protocol='https', changefreq="weekly"),
-                 # 'quote': GenericSitemap(quote_items, priority=0.6, protocol='https', changefreq="weekly"),
+                 'quote': GenericSitemap(quote_items, priority=0.6, protocol='https', changefreq="weekly"),
                  'static': StaticViewSitemap
              },
 

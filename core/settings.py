@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'tinymce',
     'Communication',
     'taggit',
+    'Quotes',
+    'QuotesMaker'
 
 ]
 

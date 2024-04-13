@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 {%load static%}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>
-    {%block title%}
-    {%endblock%}
+        {%block title%}
+        {%endblock%}
     </title>
-
 
     {%block meta%}
     {%endblock%}
+
     <link href="{%static 'images/category/l.png'%}" rel="shortcut icon" type="image/png">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=PT+Sans:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=PT+Sans:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Kalam&display=swap" rel="stylesheet">
 
 
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Amita&family=Anton&family=Bebas+Neue&family=Berkshire+Swash&family=Bubblegum+Sans&family=Bungee&family=Bungee+Inline&family=Bungee+Shade&family=Dancing+Script:wght@400;500&family=Fredericka+the+Great&family=Just+Me+Again+Down+Here&family=Kalam&family=Lobster+Two&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Metal+Mania&family=Monofett&family=Montserrat:wght@300;400&family=Oswald:wght@400;600&family=PT+Sans&family=Pacifico&family=Permanent+Marker&family=Poppins:wght@300;400;500&family=Press+Start+2P&family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400&family=Rock+Salt&family=Rubik+Mono+One&family=Sarpanch&family=Satisfy&family=Shadows+Into+Light&family=Tourney&display=swap" rel="stylesheet">
     <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amita&family=Anton&family=Bebas+Neue&family=Berkshire+Swash&family=Bubblegum+Sans&family=Bungee&family=Bungee+Inline&family=Bungee+Shade&family=Dancing+Script:wght@400;500&family=Fredericka+the+Great&family=Just+Me+Again+Down+Here&family=Kalam&family=Lobster+Two&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Metal+Mania&family=Monofett&family=Montserrat:wght@300;400&family=Oswald:wght@400;600&family=PT+Sans&family=Pacifico&family=Permanent+Marker&family=Poppins:wght@300;400;500&family=Press+Start+2P&family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400&family=Rock+Salt&family=Rubik+Mono+One&family=Sarpanch&family=Satisfy&family=Shadows+Into+Light&family=Tourney&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
-  />
-  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link href="{%static 'styles/base.css'%}?{% now 'U' %}" rel="stylesheet">
 
-    <link href="{%static 'style/base.css'%}?{% now 'U' %}" rel="stylesheet">
     {%block styles%}
     {%endblock%}
 </head>
+
 <body>
 
 
-
-<!-- ======================header starts============================================ -->
-<header>
+    <!-- header start from here -->
+    <header>
         <div class="when_sm">
             <div class="menu__ real_mn">
                 <span class="material-icons"> menu </span>
@@ -51,102 +58,155 @@
                 <span class="material-icons">drag_handle </span>
             </div>
             <h1 style="position: relative;">
-                <a href="index"> <span><span class="big">M</span><span class="small">MOTIVATIVE</span><span class="big">Q</span><span class="small">UOTES</span></span> <img alt="motivative quotes logo" height="35px" src="{%static 'images/logo.png'%}" style="position: absolute;top: -5px;">  </a>
+                <a href="{%url 'index'%}"> <span><span class="big">M</span><span class="small">OTIVATIVE</span><span
+                            class="big">Q</span><span class="small">UOTES</span></span> </a>
             </h1>
         </div>
 
         <nav>
             <ul class="big_nav">
-                <li><a href="">Quote of the Day</a></li>
-                <li><a href="">Quote Maker</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Contact Us</a></li>
+                <li><a href="{%url 'quote-of-the-day'%}">Quote of the Day</a></li>
+                <li><a href="{%url 'quote-maker'%}">Quote Maker</a></li>
+                <li><a href="{%url 'all-blogs'%}">Blog</a></li>
+                <li><a href="{%url 'contact'%}">Contact Us</a></li>
             </ul>
         </nav>
-        <div class="menu__ sh" id="searchh">
+        <div class="menu__ sh" id="search">
             <span class="material-icons"> search </span>
         </div>
+    </header>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert__box">
+        <section>
+            <i class="fas fa-times"></i>
+            <p class="{{message.tags}} alert__p">{{message}}</p>
+        </section>
+
+    </div>
+    {% endfor %}
+    {% endif %}
+    <!-- {% if messages %}
+    {% for msg in messages%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Hey</strong> {{msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endfor%}
+    {%endif%} -->
+    {%block mainContent%}
+    {%endblock%}
+
+    <div class="loader">
 
     </div>
 
+    <!-- ======================footer===================================== -->
+    <footer>
 
-</header>
-
-<div class="miniHeader">
-
-    <nav>
-        <ul class="small_nav">
-            <li><a href="">Quote of the Day</a></li>
-            <li><a href="">Quote Maker</a></li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <div></div>
-
-</div>
-<!-- ==============================header ends================================================ -->
-
-
-
-
-
-{%block mainContent%}
-{%endblock%}
-
-<div class="loader">
-
-</div>
-
-<!-- ======================footer===================================== -->
-<footer>
-
-    <div class="logo_quote">
-        <!-- <h2> <a href="{%url "index"%}"> <span class="big">M</span><span class="small">OTIVATIVE</span><span class="big">Q</span><span class="small">UOTES🥰 </span> </a></h2> -->
-        <h2 style="position: relative;">
-            <a href="{%url 'index'%}">
-            <span>
+        <div class="logo_quote">
+            <!--
+        <h2>
+            <a href="{% url 'index' %}">
                 <span class="big">M</span>
                 <span class="small">OTIVATIVE</span>
                 <span class="big">Q</span>
-                <span class="small">UOTES</span>
-            </span>
-                <img alt="motivative quotes logo" height="35px" src="{%static 'images/logo.png'%}" style="position: absolute;top: -5px;">  </a>
+                <span class="small">UOTES🥰</span>
+            </a>
         </h2>
+        -->
 
-        <p>Work until your bank account looks like a phone number.</p>
+            <!-- Modified HTML with proper formatting -->
+            <h2 style="position: relative;">
+                <a href="{% url 'index' %}">
+                    <span>
+                        <span class="big">M</span>
+                        <span class="small">OTIVATIVE</span>
+                        <span class="big">Q</span>
+                        <span class="small">UOTES</span>
+                    </span>
+                    <img alt="motivative quotes logo" height="35px" src="{% static 'images/category/logo.jpg' %}"
+                        style="position: absolute; top: -5px;">
+                </a>
+            </h2>
 
-    </div>
+            <p>Believe you can and you're halfway there. - Theodore Roosevelt</p>
 
-
-    <div class="site_links">
-    <h3>Links</h3>
-    <a href="contact">Contact Us</a>
-    <a href="">Sitemap</a>
-    <a href="">Privacy Policy</a>
-    </div>
-
-
-    <div class="connect_us">
-    <h3>Follow us on social media</h3>
-    <div class="socials">
-    <a href=""><i class="fab fa-facebook-square"></i></a>
-    <a href=""><i class="fab fa-instagram"></i></a>
-    <a href=""><i class="fab fa-youtube"></i></a>
-    </div>
-
-    </div>
-
-</footer>
-<!-- ==============footer end========================================= -->
+        </div>
 
 
-{%block myscript%}
-{%endblock%}
-<script>
 
-</script>
+        <div class="site_links">
+            <h3>Links</h3>
+            <a href="{%url 'contact'%}">Contact Us</a>
+            <a href="">Sitemap</a>
+            <a href="">Privacy Policy</a>
+        </div>
+        <div class="connect_us">
+            <h3>Follow us on social media</h3>
+            <div class="socials">
+                <a href=""><i class="fab fa-facebook-square"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+            </div>
+
+        </div>
+
+    </footer>
+    <!-- footer end -->
+
+
+    {%block myscript%}
+    {%endblock%}
+    <script>
+
+        try {
+            document.querySelector(".alert__box i").addEventListener('click', () => {
+                document.querySelector(".alert__box").style.display = "none"
+            })
+        }
+        catch (x) {
+        }
+
+        try {
+            document.querySelector("#search").addEventListener('click', () => window.location.href = "/blog/search/?q=''")
+        }
+        catch (u) { }
+
+        const menu = document.querySelector('.real_mn')
+        const header = document.querySelector('.miniHeader')
+        const menuDrag = document.querySelector('.real_mn_drag')
+        const menuSide = document.querySelector('.miniHeader div')
+
+        menu.addEventListener('click', () => {
+            header.style.display = 'flex'
+            menuDrag.style.display = 'flex'
+            menu.style.display = 'none'
+        })
+        menuDrag.addEventListener('click', () => hideMenu())
+        menuSide.addEventListener('click', () => hideMenu())
+
+        const hideMenu = () => {
+            header.style.display = 'none'
+            menuDrag.style.display = 'none'
+            menu.style.display = 'flex'
+        }
+
+
+
+    // for alert.
+    setTimeout(function(){
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert){
+            alert.remove();
+        });
+    },3000);
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

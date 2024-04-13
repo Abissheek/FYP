@@ -34,6 +34,11 @@
    font-weight: bold;
    font-size: 16px;
 }
+.contact_form form input:focus{
+    border-radius: 2px solid #008000;
+
+}
+
 
 .contact_form form p{
     position: relative;
@@ -45,11 +50,11 @@
 }
 
 .contact_form form textarea:focus{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #008000;
 
 }
 .contact_form form input:focus{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #008000;
 
 }
 
@@ -59,8 +64,8 @@
     background: transparent;
     border: none;
     outline: none;
-    border-bottom: 1px solid #3524b5;
-    color: #3524b5;
+    border-bottom: 1px solid black;
+    color: black;
     width: 105%;
     resize: none;
    font-size: 16px;
@@ -76,17 +81,17 @@
     margin: 10px 0;
 }
 .submit{
-    border: 1px solid #3524b5;
+    border: 1px solid #008000;
     font-family: 'Open Sans',sans-serif;
     background: none;
     margin: 15px 0;
     border-radius:3px;
     transition: .3s linear;
-    color: #3524b5;
+    color: #008000;
     font-weight: bold;
 }
 .submit:hover{
-    background:#3524b5 ;
+    background:#008000 ;
     color: white!important;
     transition: .3s linear;
     cursor: pointer;

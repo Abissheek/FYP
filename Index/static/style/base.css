@@ -252,6 +252,8 @@ footer{
     display: flex;
 }
 
+
+
 .logo_quote{
     flex: 1;
 }
@@ -262,16 +264,19 @@ footer{
 .logo_quote p{
     color: gray;
     margin: 1rem 0;
+    color: #008000;
 }
 
 .site_links{
     flex: 1;
     padding-left: 20%;
+    color: #008000;
 }
 
 .site_links a{
     display: block;
     margin: 0.8rem 0;
+    color: #008000;
 }
 
 .connect_us{
@@ -283,6 +288,7 @@ footer{
 
 .site_links h3,.connect_us h3{
     font-weight: 500;
+    color: #008000;
 }
 
 .socials a{
@@ -290,6 +296,7 @@ footer{
     margin: 1rem 0;
     margin-right: 2rem;
     font-size: 1.1rem;
+    color: #008000;
 }
 .socials{
     display: flex;
